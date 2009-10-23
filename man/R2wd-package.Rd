@@ -16,8 +16,8 @@ package.
 \tabular{ll}{
 Package: \tab R2wd\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2009-10-15\cr
+Version: \tab 1.1\cr
+Date: \tab 2009-10-23\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -49,9 +49,10 @@ Maintainer: Christian Ritter <R2wd@ridaco.be>
 }
 \keyword{ package }
 \seealso{
-\code{\link[rcom]{package:rcom}}
+%\code{\link[rcom]{package:rcom}}
 }
 \examples{
+\dontrun{
 ## rcom needs to be installed
 if (!require(rcom)) warning("Install rcom first")
 ## This initializes the hook to Word
@@ -75,9 +76,9 @@ wdPlot(1:100,sin((1:100)/10),type="l",main="a test graph")
 ##
 wdPlot(mtcars,plotfun=pairs,main="a test graph",height=6,width=6,pointsize=8)
 ##
-## we can also do something more elaborate
+## we can also do something more elaborate (requires latticeExtra)
 ##
-require(latticeExtra)
+if (!require(latticeExtra)) warning("Install latticeExtra first")
 fun<-function(...) print(useOuterStrips(xyplot(...)))
 wdPlot(mpg~hp|cyl+carb,data=mtcars,plotfun=fun,height=6,width=6)
 ##
@@ -97,4 +98,5 @@ wdApplyTheme("None")
 wdSave("MyDoc")
 ##
 wdQuit()
+}
 }
