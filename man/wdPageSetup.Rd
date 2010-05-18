@@ -1,27 +1,34 @@
-\name{wdGoToBookmark}
+\name{wdPageSetup}
 \Rdversion{1.1}
-\alias{wdGoToBookmark}
+\alias{wdPageSetup}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Navigate to a bookmark in the active Word document.
+Modify page setup in Word.
 }
 \description{
-Looks up the \code{bookmark} in the bookmarks collection and goes to it.
+Modify page setup in Word.
 }
 \usage{
-wdGoToBookmark(bookmark, wdapp = .R2wd)
+wdPageSetup(orientation = "portrait", margins = rep(1, 4), scope = "section", wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{bookmark}{
-    the name of the bookmark.
+  \item{orientation}{
+    page orientation, either "portrait" or "landscape"
+}
+  \item{margins}{
+    a vector of page margins in inches (a unit variable will be supplied later)
+}
+  \item{scope}{
+    whether the change applies to the entire document ("all") or only to
+    the present section ("section").
 }
   \item{wdapp}{
-    the handle to the Word application (usually not needed).
+    handle to the Word Application (usually not needed).
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  this invokes the required methods in word to set page orientation and margins
 }
 \value{
 %%  ~Describe the value returned
@@ -47,17 +54,11 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 }
 \examples{
 \dontrun{
-wdGet()
-## the following command starts a new section and adds a bookmark.
-wdSection("This a new section",label="sec1")
-## now we add some text
-wdBody("R2wd is a package to write Word documents from R")
-## we can now go back to the section header
-wdGoToBookmark("sec1")
+ wdGet()
+wdPageSetup(orientation="landscape",margins=c(2,2,2,2),scope="all")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{IO}
 \keyword{connection}
-

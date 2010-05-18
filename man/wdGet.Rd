@@ -12,10 +12,19 @@ Word application. If Word is already running and has an active document,
 it will just return the handle.
 }
 \usage{
-wdGet(visible = TRUE)
+wdGet(filename = NULL, path = "", doc = NULL, visible = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
+  \item{filename}{
+the filename of an existing word document (if null, make a new one)
+}
+  \item{path}{
+the path to an existing word document
+}
+  \item{doc}{
+(not yet used)
+}
   \item{visible}{
 whether the Word application should be visible.
 }

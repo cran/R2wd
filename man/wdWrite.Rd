@@ -1,23 +1,26 @@
-\name{wdGoToBookmark}
+\name{wdWrite}
 \Rdversion{1.1}
-\alias{wdGoToBookmark}
+\alias{wdWrite}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Navigate to a bookmark in the active Word document.
+Write text to word.
 }
 \description{
-Looks up the \code{bookmark} in the bookmarks collection and goes to it.
+Write text in current style and end with a paragraph break if requested.
 }
 \usage{
-wdGoToBookmark(bookmark, wdapp = .R2wd)
+wdWrite(text = "", paragraph = TRUE, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{bookmark}{
-    the name of the bookmark.
+  \item{text}{
+the text to write.
+}
+  \item{paragraph}{
+whether a paragraph break should be added at the end.
 }
   \item{wdapp}{
-    the handle to the Word application (usually not needed).
+the handle to the Word Application (usually not needed).
 }
 }
 \details{
@@ -34,10 +37,10 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Christian Ritter
 }
 \note{
-%%  ~~further notes~~
+This is almost the same as \code{wdBody}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -48,12 +51,9 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 \examples{
 \dontrun{
 wdGet()
-## the following command starts a new section and adds a bookmark.
-wdSection("This a new section",label="sec1")
-## now we add some text
-wdBody("R2wd is a package to write Word documents from R")
-## we can now go back to the section header
-wdGoToBookmark("sec1")
+wdTitle("R2wd: A package to write ...")
+wdSetFont(fontname="Symbol")
+wdWrite("R2wd is a package for ...")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

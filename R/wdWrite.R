@@ -1,8 +1,7 @@
-wdNormal <-
+wdWrite <-
 function (text = "", paragraph = TRUE, wdapp = .R2wd)
 {
-    wdsel <- wdapp[['Selection']]
-    wdsel[['Style']]<- -1
+    wdsel<-wdapp[['Selection']]
     newtext<-text
     newtext[newtext==""]<-"\n"
     newtext<-paste(newtext,collapse=" ")

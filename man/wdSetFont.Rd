@@ -1,34 +1,37 @@
-\name{wdSubsection}
-\Rdversion{1.1}
-\alias{wdSubsection}
+\name{wdSetFont}
+\alias{wdSetFont}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Start a new Word section, add a heading and a bookmark.
+Set font in Word.
 }
 \description{
-Start a subsection (see \code{\link{wdSection}} for details.
+This function allows to set the font type and the font size of the
+active Word document.
 }
 \usage{
-wdSubsection(title, label = gsub(" ", "_", paste("subsec", title, sep = "_")),
-newpage = FALSE, wdapp = .R2wd)
+wdSetFont(fontname = NULL, fontsize = NULL, bold=NULL, italic=NULL,wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{title}{
-the sub section title.
+  \item{fontname}{
+A font name Word knows about, such as Arial, Times New Roman, etc.
 }
-  \item{label}{
-the bookmark.
+  \item{fontsize}{
+The point size of the font.
 }
-  \item{newpage}{
-whether the section should start on a new page.
+  \item{bold}{
+The point size of the font.
+}
+  \item{italic}{
+The point size of the font.
 }
   \item{wdapp}{
-the handle to the Word Application (usually not needed).
+The handle to Word.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function uses the handle .R2wd to talk to Word and to change font
+name and size at the current position of the cursor in the active document.
 }
 \value{
 %%  ~Describe the value returned
@@ -56,9 +59,10 @@ the handle to the Word Application (usually not needed).
 \dontrun{
 wdGet()
 wdTitle("Title")
-wdSection("Section 1",newpage=TRUE)
-wdSubsection("Sub-section 1.1")
-wdSubsubsection("Sub-sub-section 1.1.a")
+wdWrite("This is in normal font")
+wdSetFont(fontname="Garamond",fontsize=14,bold=TRUE,italic=TRUE)
+wdWrite("This is in 14pt Garamond")
+wdNormal("This switches back to Normal")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

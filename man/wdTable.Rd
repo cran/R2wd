@@ -11,8 +11,7 @@ add a bookmark (and a caption - doesn't work yet).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-wdTable(data, caption = "", bookmark = NULL, pointsize = 9,
-padding = 5, wdapp = .R2wd)
+wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autoformat = 1, align = NULL, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -31,15 +30,22 @@ padding = 5, wdapp = .R2wd)
   \item{padding}{
     how much cell-padding (in points)
 }
+  \item{autoformat}{
+    which of the Word autoformats to use (try 1, 2, 3)
+}
+  \item{align}{
+    alignment instruction. Use c("l",rep("r",ncol(data))) to align
+    first column left and the others right. "c" stands for centering.
+}
   \item{wdapp}{
     the handle to the Word Application (usually not needed).
 }
 }
 \details{
 Creates a Word table to the adequate dimensions and inserts it between
-two paragraph breaks. Fills it with dataframe or array. Creates a
-bookmark and adds a caption (doesn't work yet). Uses default word formating (this should be
-made more flexible).
+two paragraph breaks. Fills it with dataframe or array (using the clipboard).
+Creates a bookmark and adds a caption. Uses word autoformating and
+aligns columns according to user input.
 }
 \value{
 %%  ~Describe the value returned

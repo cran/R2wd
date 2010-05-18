@@ -4,7 +4,12 @@ function(title,
          paragraph=TRUE,wdapp=.R2wd){
     wdsel<-wdapp[['Selection']]
     wdsel[["Style"]]<- -63
-    wdsel$TypeText(title)
+    newtext<-title
+    newtext[newtext==""]<-"\n"
+    newtext<-paste(newtext,collapse=" ")
+    newtext<-gsub("\n ","\n",newtext)
+    newtext<-gsub(" \n","\n",newtext)
+    wdsel$TypeText(newtext)
     wdInsertBookmark(label)
     if(paragraph) {
         wdsel$TypeParagraph()

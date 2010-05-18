@@ -1,31 +1,37 @@
-\name{wdBody}
-\Rdversion{1.1}
-\alias{wdBody}
+\name{wdVerbatim}
+\alias{wdVerbatim}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Write in body text.
+write verbatim text to word (for example model output).
 }
 \description{
-Inserts text in 'Body' style at the current cursor point in Word.
+write single spaced text in (by default) Courier font to word. This is
+useful to render R output 'as is'.
 }
 \usage{
-wdBody(text = "", paragraph = TRUE, wdapp = .R2wd)
+wdVerbatim(text = "", paragraph = TRUE, fontsize = 9, fontname = "Courier New", wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{text}{
-a test string to be written to Word.
+the text to write
 }
   \item{paragraph}{
-whether a paragraph (line return) should be added at the end.
+whether the chunk should be closed by a paragraph return.
+}
+  \item{fontsize}{
+size of the font
+}
+  \item{fontname}{
+name of the font
 }
   \item{wdapp}{
-the handle to word (can be ignored).
+handle to the Word application (usually not used).
 }
 }
 \details{
-Switches to 'Body' style, adds the text, and then gives a carriage
-return (paragraph break) if requested.
+Saves the current style. Wwitches to Courier New, single spaced, 9 pt
+(by default) and renders the text. Switches back to the previous style.
 }
 \value{
 %%  ~Describe the value returned
@@ -41,7 +47,7 @@ return (paragraph break) if requested.
 Christian Ritter
 }
 \note{
-%%  ~~further notes~~
+This is almost the similar to \code{wdBody} and \code{wdWrite}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -50,10 +56,13 @@ Christian Ritter
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\dontrun{wdBody("R2wd is a package to write MS-Word files from R")}
+\dontrun{
+wdGet()
+tt<-capture.output(summary(lm(mpg~hp,data=mtcars)))
+wdVerbatim(tt)
+  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{IO}
 \keyword{connection}
-

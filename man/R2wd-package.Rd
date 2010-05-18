@@ -16,8 +16,8 @@ package.
 \tabular{ll}{
 Package: \tab R2wd\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2009-10-23\cr
+Version: \tab 1.3.0\cr
+Date: \tab 2010-05-18\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -67,6 +67,9 @@ wdTitle("R2wd, A Package for writing Word Documents from R",label="R2wd")
 wdSection("Introduction")
 ##
 wdBody("This is an example on how to use the R2wd package.")
+wdWrite("wdWrite continues writing in the same style. If you set paragraph to FALSE, it doesn't add a paragraph return at the end. For example, you can use to add a footnote",paragraph=FALSE)
+wdInsertFootnote("Footnotes have two arguments, the footnote text and the footnote reference. By default, word creates the reference automatically, but you can also choose what you want.","whatUwant")
+wdBody(". As it is shown here")
 ##
 ## We can also plot data. The following line uses the default plot command
 ##
@@ -82,13 +85,26 @@ if (!require(latticeExtra)) warning("Install latticeExtra first")
 fun<-function(...) print(useOuterStrips(xyplot(...)))
 wdPlot(mpg~hp|cyl+carb,data=mtcars,plotfun=fun,height=6,width=6)
 ##
-## There is also rudimentary way to transfer data frames.
+## Here is an example for using ggplot (slow).
+##
+if (!require(ggplot2)) warning("Install ggplot2 first")
+library(ggplot2)
+plotfun<-function(data)
+print(ggplot(data,aes(cut,fill=cut))+geom_bar()+facet_grid(.~clarity))
+wdPlot(diamonds,plotfun=plotfun,height=6,width=6)
+##
+## You can also write data frames as word tables.
 ##
 wdTable(mtcars)
 ##
 ## It may be useful to format them first
 ##
 wdTable(format(mtcars))
+##
+## we can also add verbatim model output
+##
+tt<-capture.output(summary(lm(mpg~hp,data=mtcars)))
+wdVerbatim(tt)
 ##
 ## Finally, we can apply themes and templates
 ##

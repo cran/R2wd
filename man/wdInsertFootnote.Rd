@@ -1,27 +1,23 @@
-\name{wdSubsection}
+\name{wdInsertFootnote}
 \Rdversion{1.1}
-\alias{wdSubsection}
+\alias{wdInsertFootnote}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Start a new Word section, add a heading and a bookmark.
+Insert a Footnote
 }
 \description{
-Start a subsection (see \code{\link{wdSection}} for details.
+Inserts a footnote at the current selection.
 }
 \usage{
-wdSubsection(title, label = gsub(" ", "_", paste("subsec", title, sep = "_")),
-newpage = FALSE, wdapp = .R2wd)
+wdInsertFootnote(text="",reference="",wdapp=.R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{title}{
-the sub section title.
+  \item{text}{
+the footnote text.
 }
-  \item{label}{
-the bookmark.
-}
-  \item{newpage}{
-whether the section should start on a new page.
+  \item{reference}{
+the footnote reference. By default, this is generated automatically by Word.
 }
   \item{wdapp}{
 the handle to the Word Application (usually not needed).
@@ -31,17 +27,14 @@ the handle to the Word Application (usually not needed).
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+(invisible): a handle to the footnote object. Can be used to manipulate
+(usually not used).
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Christian Ritter
 }
 \note{
 %%  ~~further notes~~
@@ -55,10 +48,10 @@ the handle to the Word Application (usually not needed).
 \examples{
 \dontrun{
 wdGet()
-wdTitle("Title")
-wdSection("Section 1",newpage=TRUE)
-wdSubsection("Sub-section 1.1")
-wdSubsubsection("Sub-sub-section 1.1.a")
+wdTitle("R2wd a package for writing Word documents from R")
+wdInsertFootnote("see also SWORD (rcom.unive.ac.at) for integrating R
+calculations in word documents.")
+wdBody("This package allows ...")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
