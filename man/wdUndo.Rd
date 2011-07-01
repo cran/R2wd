@@ -1,27 +1,28 @@
-\name{wdGoToBookmark}
+\name{wdUndo}
 \Rdversion{1.1}
-\alias{wdGoToBookmark}
+\alias{wdUndo}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Navigate to a bookmark in the active Word document.
+Save the active document.
 }
 \description{
-Looks up the \code{bookmark} in the bookmarks collection and goes to it.
+Save the active document. If a name is given, it is used for the new
+document, otherwise Word will ask.
 }
 \usage{
-wdGoToBookmark(bookmark, wdapp = .R2wd)
+wdUndo(times = 1, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{bookmark}{
-    the name of the bookmark.
+  \item{times}{
+    the \code{times} argument of the Undo method of the word document
 }
   \item{wdapp}{
-    the handle to the Word application (usually not needed).
+    The handle to the Word Application (usually not needed).
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Saves the active document to the name if given or Word will ask for a name.
 }
 \value{
 %%  ~Describe the value returned
@@ -34,7 +35,7 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Christian Ritter
 }
 \note{
 %%  ~~further notes~~
@@ -48,16 +49,14 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 \examples{
 \dontrun{
 wdGet()
-## the following command starts a new section and adds a bookmark.
-wdSection("This a new section",label="sec1")
-## now we add some text
-wdBody("R2wd is a package to write Word documents from R")
-## we can now go back to the section header
-wdGoToBookmark("sec1")
+wdTitle("By default, writing a title represents 5 calls to word: Style, type text,
+inserting a bookmark, typing a paragraph, and setting the style back to normal")
+# we can undo it by invoking the Undo method on the document five times
+wdUndo(5)
+wdQuit()
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{IO}
 \keyword{connection}
-

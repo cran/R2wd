@@ -12,7 +12,7 @@ can be replaced by another function which creates a graph.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-wdPlot(..., plotfun = plot, height = 5, width = 5,
+wdPlot(..., plotfun = plot, method="metafile",height = 5, width = 5,
 pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -22,6 +22,9 @@ pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 }
   \item{plotfun}{
     the plot function (by default \code{plot})
+}
+  \item{method}{
+    the graphics device type (\code{metafile} or \code{bitmap})
 }
   \item{height}{
     the height of the plot in R units (commonly inches)
@@ -70,8 +73,17 @@ Christian Ritter
 \examples{
 \dontrun{
 wdGet()
+## a basic call using the default metafile device
 wdTitle("R2wd: plotting")
 wdPlot(1:100,sin(1:100),type="l",bty="l")
+## a call using a ggplot function which uses semi-transparency
+## this requires the bitmap device (the metafile device is nicer but doesn't render semi-transparency)
+require(ggplot2)
+funny<-function(){
+c <- ggplot(mtcars, aes(qsec, wt))
+print(c + stat_smooth())
+}
+wdPlot(plotfun=funny,method="bitmap")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

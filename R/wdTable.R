@@ -1,9 +1,8 @@
 wdTable <-
     function (data, caption = "", bookmark = NULL, pointsize = 9,
-              padding = 5, autoformat = 1, align = NULL,
+              padding = 5, autoformat = 1, align = c("l", rep("r", ncol(data))),
               wdapp = .R2wd)
 {
-    wdapp[['ScreenUpdating']]<-FALSE
     wdtab <- wdapp[["ActiveDocument"]][["Tables"]]
     wdsel <- wdapp[["Selection"]]
     wddoc <- wdapp[["ActiveDocument"]]
@@ -30,12 +29,10 @@ wdTable <-
     tab$AutoFitBehavior(1)
     tab[["Range"]]$Select()
     wdsel[["Font"]][["Size"]] <- pointsize
-    if (!is.null(align)){
-        for (i in 1:length(align)) {
-            tab[["Columns"]]$Item(i)$Select()
-            ttt<-wdsel[["ParagraphFormat"]]
-            ttt[["Alignment"]] <- c(l = 0,c = 1, r = 2)[align[i]]
-        }
+    for (i in 1:length(align)) {
+        tab[["Columns"]]$Item(i)$Select()
+        wdsel[["ParagraphFormat"]][["Alignment"]] <- c(l = 0,
+                                                       c = 1, r = 2)[align[i]]
     }
     tab[["Range"]]$Select()
     caption <- paste(" ", caption, sep = "")
@@ -46,6 +43,5 @@ wdTable <-
     wdInsertBookmark(bookmark)
     wddoc[["Bookmarks"]]$Item(bookmarkcounter)$Select()
     wdGoToBookmark("R2wdEndmark")
-    wdapp[['ScreenUpdating']]<-TRUE
     return()
 }

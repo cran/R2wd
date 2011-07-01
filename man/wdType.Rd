@@ -1,27 +1,38 @@
-\name{wdGoToBookmark}
+\name{wdType}
 \Rdversion{1.1}
-\alias{wdGoToBookmark}
+\alias{wdType}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Navigate to a bookmark in the active Word document.
+write text to word
 }
 \description{
-Looks up the \code{bookmark} in the bookmarks collection and goes to it.
+Inserts text at the current cursor point in Word (by default without
+messing with styles).
 }
 \usage{
-wdGoToBookmark(bookmark, wdapp = .R2wd)
+wdType(text = "", italic=FALSE, alignment="nothing", paragraph = TRUE, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{bookmark}{
-    the name of the bookmark.
+  \item{text}{
+a test string to be written to Word.
+}
+  \item{italic}{
+if \code{TRUE} then the text will be written in italics
+}
+  \item{alignment}{
+choice of "nothing", "left", "center", "right".
+}
+  \item{paragraph}{
+whether a paragraph (line return) should be added at the end.
 }
   \item{wdapp}{
-    the handle to the Word application (usually not needed).
+the handle to word (can be ignored).
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Switches to 'Type' style, adds the text, and then gives a carriage
+return (paragraph break) if requested.
 }
 \value{
 %%  ~Describe the value returned
@@ -34,7 +45,7 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Christian Ritter
 }
 \note{
 %%  ~~further notes~~
@@ -46,15 +57,7 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\dontrun{
-wdGet()
-## the following command starts a new section and adds a bookmark.
-wdSection("This a new section",label="sec1")
-## now we add some text
-wdBody("R2wd is a package to write Word documents from R")
-## we can now go back to the section header
-wdGoToBookmark("sec1")
-}
+\dontrun{wdType("R2wd is a package to write MS-Word files from R")}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,27 +1,32 @@
-\name{wdGoToBookmark}
+\name{wdEnumerate}
 \Rdversion{1.1}
-\alias{wdGoToBookmark}
+\alias{wdEnumerate}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Navigate to a bookmark in the active Word document.
+Start a numbered list
 }
 \description{
-Looks up the \code{bookmark} in the bookmarks collection and goes to it.
+This corresponds to pushing the [123] button in Word.
 }
 \usage{
-wdGoToBookmark(bookmark, wdapp = .R2wd)
+wdEnumerate(Gallery=2, Template=1, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{bookmark}{
-    the name of the bookmark.
+  \item{Gallery}{
+the (numbered) item in the list gallery. The pre-set \code{Gallery=2}
+implies that bullets are used.
+}
+  \item{Template}{
+the (numbered) item in the list template. The pre-set \code{Template=1}
+implies that the first type is used.
 }
   \item{wdapp}{
-    the handle to the Word application (usually not needed).
+the handle to word (can be ignored).
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Starts a numbered list like pushing on the [123] button in Word.
 }
 \value{
 %%  ~Describe the value returned
@@ -34,7 +39,7 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Christian Ritter
 }
 \note{
 %%  ~~further notes~~
@@ -46,15 +51,7 @@ wdGoToBookmark(bookmark, wdapp = .R2wd)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\dontrun{
-wdGet()
-## the following command starts a new section and adds a bookmark.
-wdSection("This a new section",label="sec1")
-## now we add some text
-wdBody("R2wd is a package to write Word documents from R")
-## we can now go back to the section header
-wdGoToBookmark("sec1")
-}
+\dontrun{wdEnumerate("R2wd is a package to write MS-Word files from R")}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

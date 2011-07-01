@@ -11,7 +11,7 @@ add a bookmark (and a caption - doesn't work yet).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autoformat = 1, align = NULL, wdapp = .R2wd)
+wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autoformat = 1, align = c("l", rep("r", ncol(data))), wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -34,7 +34,7 @@ wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autofor
     which of the Word autoformats to use (try 1, 2, 3)
 }
   \item{align}{
-    alignment instruction. Use c("l",rep("r",ncol(data))) to align
+    alignment instruction. Default: c("l",rep("r",ncol(data))): align
     first column left and the others right. "c" stands for centering.
 }
   \item{wdapp}{

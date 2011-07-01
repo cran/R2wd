@@ -16,8 +16,8 @@ package.
 \tabular{ll}{
 Package: \tab R2wd\cr
 Type: \tab Package\cr
-Version: \tab 1.3.0\cr
-Date: \tab 2010-05-18\cr
+Version: \tab 1.4.0\cr
+Date: \tab 2011-08-09\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -36,6 +36,9 @@ commands. The wdTable command takes a dataframe or an array as
 arguments, creates a Word table of the appropriate dimensions and
 injects the content of the dataframe or array into it. It then formats
 the table in Word using elementary formating elements.
+
+There are a few convenience functions for carrying out various typical
+functions in Word, such as undo, page setup, verbatim, etc.
 
 The functions wdApplyTheme and wdApplyTemplate allow to work with themes
 and templates.
@@ -85,26 +88,13 @@ if (!require(latticeExtra)) warning("Install latticeExtra first")
 fun<-function(...) print(useOuterStrips(xyplot(...)))
 wdPlot(mpg~hp|cyl+carb,data=mtcars,plotfun=fun,height=6,width=6)
 ##
-## Here is an example for using ggplot (slow).
-##
-if (!require(ggplot2)) warning("Install ggplot2 first")
-library(ggplot2)
-plotfun<-function(data)
-print(ggplot(data,aes(cut,fill=cut))+geom_bar()+facet_grid(.~clarity))
-wdPlot(diamonds,plotfun=plotfun,height=6,width=6)
-##
-## You can also write data frames as word tables.
+## There is also rudimentary way to transfer data frames.
 ##
 wdTable(mtcars)
 ##
 ## It may be useful to format them first
 ##
 wdTable(format(mtcars))
-##
-## we can also add verbatim model output
-##
-tt<-capture.output(summary(lm(mpg~hp,data=mtcars)))
-wdVerbatim(tt)
 ##
 ## Finally, we can apply themes and templates
 ##
@@ -114,5 +104,20 @@ wdApplyTheme("None")
 wdSave("MyDoc")
 ##
 wdQuit()
+##
+## Another example on how to wrap the definition of a plot into a function and call it from wdPlot
+##
+xseries = ts(1:100) #make the series of the wind stress
+yseries = ts(1:100)     #time series objects
+myplot<-function(x,y){
+   	par(mfrow=c(3,3), mar=c(2.5,4,4,1),oma=c(2,0,0,0))   #set up plot area
+	for (h in 0:8) {     #loop through lags 0-8
+      		plot.ts(xy.lines=F,xy.labels=F,lag(x,-h),y,main=paste("x(t-",h,")",sep=""),
+		ylab=expression(x[t]),xlab="")
+	mtext("Yearly",SOUTH<-1, line=0.0,adj=0, cex=1, col="Black", outer=TRUE)
+ }
+}
+wdPlot(x,y,plotfun=myplot,height=6,width=6,pointsize=9,bookmark="myplot",paragraph=TRUE)
+##
 }
 }
