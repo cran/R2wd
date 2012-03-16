@@ -23,27 +23,12 @@ the footnote reference. By default, this is generated automatically by Word.
 the handle to the Word Application (usually not needed).
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 (invisible): a handle to the footnote object. Can be used to manipulate
 (usually not used).
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 \dontrun{

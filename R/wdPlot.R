@@ -1,6 +1,5 @@
 wdPlot<-
-function (..., plotfun = plot, method="metafile",height = 5, width = 5,pointsize = 10,
-     bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
+function (..., plotfun = plot, caption="",method="metafile",height = 5, width = 5,pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 {
      wdsel <- wdapp[["Selection"]]
      wddoc <- wdapp[["ActiveDocument"]]
@@ -15,7 +14,7 @@ function (..., plotfun = plot, method="metafile",height = 5, width = 5,pointsize
 
 	},
 	bitmap= {
-		bmp(file="R2wdtemp.bmp",height=height,width=width,unit="in",res=72)
+		bmp(filename="R2wdtemp.bmp",height=height,width=width,units="in",res=72)
 		plotfun(...)
 		dev.off()
 		path<-paste(getwd(),"R2wdtemp.bmp",sep="/")
@@ -26,6 +25,9 @@ function (..., plotfun = plot, method="metafile",height = 5, width = 5,pointsize
 	)
      wdsel$MoveLeft()
      wdsel$Expand()
+     if(caption!=""){
+     caption <- paste(" ", caption, sep = "")
+     wdsel$InsertCaption("Figure", caption, "", 1, 0)}
      if (is.null(bookmark))
          bookmark <- paste("InlineShape",
 	wddoc[["InlineShapes"]][["Count"]],

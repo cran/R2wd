@@ -31,21 +31,9 @@ This function descends down the indicated property tree. It can also
 work with calls to the 'Items' method. In this case, the corresponding
 item numbers should be inserted in the \code{property} vector.
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

@@ -7,23 +7,25 @@
 Write MS-Word documents from R.
 }
 \description{
-R2wd uses the StatconnDCOM server via rscproxy and rcom to communicate with
-MS-Word via the COM interface (Windows only). R2wd can be seen as a
-collection of convenience wrappers to calls of functions in the rcom
-package.
-}
+R2wd uses a COM client to communicate with MS-Word via the COM interface
+(Windows only). Two COM clients are supported: "rcom" (Statconn DCOM via
+Rscproxy) and RDCOMClient (from the omegahat distribution). R2wd can be
+seen as a  collection of convenience wrappers to calls
+of the COM client.}
 \details{
 \tabular{ll}{
 Package: \tab R2wd\cr
 Type: \tab Package\cr
-Version: \tab 1.4.0\cr
-Date: \tab 2011-08-09\cr
+Version: \tab 1.5.0\cr
+Date: \tab 2012-02-28\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
 If Word is not already running, wdGet() opens a new Word document,
 otherwise, it establishes a COM handle to the instance which is already
-running. The functions wdTitle, wdHeader, wdBody, and wdParagraph can be
+running. If the parameter "filename" is specified, wdGet will check
+whether this file is already open or (if not) try to open it.
+The functions wdTitle, wdHeader, wdType, wdBody, and wdParagraph can be
 used to inject text elements into Word. Moreover, bookmarks can be added
 via wdInsertBookmarks and wdGoToBookmark allows to navigate among the
 bookmarks which also exist. There is another set of convenience
@@ -48,12 +50,7 @@ Christian Ritter
 
 Maintainer: Christian Ritter <R2wd@ridaco.be>
 }
-\references{
-}
 \keyword{ package }
-\seealso{
-%\code{\link[rcom]{package:rcom}}
-}
 \examples{
 \dontrun{
 ## rcom needs to be installed

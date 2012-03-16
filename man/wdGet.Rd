@@ -3,7 +3,7 @@
 \alias{wdGet}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Gets a handle to Word.
+Gets a handle to Word (using RDCOMClient).
 }
 \description{
 wdGet checks first if Word is already running. If this is not the case,
@@ -12,7 +12,7 @@ Word application. If Word is already running and has an active document,
 it will just return the handle.
 }
 \usage{
-wdGet(filename = NULL, path = "", doc = NULL, visible = TRUE)
+wdGet(filename = NULL, path = "", method="rcom",visible = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,34 +22,22 @@ the filename of an existing word document (if null, make a new one)
   \item{path}{
 the path to an existing word document
 }
-  \item{doc}{
-(not yet used)
+  \item{method}{
+the COM client. Either "rcom" (default) or "RDCOMClient"
 }
   \item{visible}{
 whether the Word application should be visible.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 a handle to the COM object refering to the Word application.
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 Christian Ritter
 }
-\note{
-%%  ~~further notes~~
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 \dontrun{
 wdGet()

@@ -32,14 +32,8 @@ case, the corresponding item numbers should be inserted in the
 \value{
 The value of the lowest level of the property tree.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

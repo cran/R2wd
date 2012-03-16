@@ -6,10 +6,12 @@ function (text = "",
           wdapp = .R2wd)
 {
     wdsel <- wdapp[['Selection']]
-    if (italic) wdsel[['Font']][['Italic']]<--1
-    if (alignment=="left") wdsel[['ParagraphFormat']][['Alignment']]<-0
-    if (alignment=="center") wdsel[['ParagraphFormat']][['Alignment']]<-1
-    if (alignment=="right") wdsel[['ParagraphFormat']][['Alignment']]<-2
+    tt<-wdsel[['Font']]
+    if (italic) tt[['Italic']]<--1 else tt[['Italic']]<-0
+    tt<-wdsel[['ParagraphFormat']]
+    if (alignment=="left") tt[['Alignment']]<-0
+    if (alignment=="center") tt[['Alignment']]<-1
+    if (alignment=="right") tt[['Alignment']]<-2
     newtext<-text
     newtext[newtext==""]<-"\n"
     newtext<-paste(newtext,collapse=" ")

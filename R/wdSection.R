@@ -1,5 +1,5 @@
 wdSection <-
-function (title, label = gsub(" ", "_", paste("sec", title, sep = "_")),
+function (title, label = gsub("[.,-:?!@#+* ]", "_", paste("sec", title, sep = "_")),
     newpage = FALSE, wdapp = .R2wd)
 {
     wdSectionBreak(continuous = !newpage,wdapp=wdapp)

@@ -15,7 +15,7 @@ Start a new section of the document.
   switching to Normal style.
  }
 \usage{
-wdSection(title, label = gsub(" ", "_", paste("sec", title, sep = "_")),
+wdSection(title, label = gsub("[.,-:?!@#+* ]", "_", paste("sec", title, sep = "_")),
 newpage = FALSE, wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -33,31 +33,12 @@ newpage = FALSE, wdapp = .R2wd)
     handle to Word Application (usually not needed).
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 \dontrun{
 wdGet()

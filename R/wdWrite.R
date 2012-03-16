@@ -1,5 +1,5 @@
 wdWrite <-
-function (text = "", paragraph = TRUE, wdapp = .R2wd)
+function (text = "", paragraph = FALSE, wdapp = .R2wd)
 {
     wdsel<-wdapp[['Selection']]
     newtext<-text

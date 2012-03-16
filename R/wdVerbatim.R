@@ -5,9 +5,11 @@ function (text = "", paragraph = TRUE, fontsize=9,fontname="Courier New",wdapp =
    wdsel$TypeParagraph()
    savestyle <- wdsel[["Style"]]
    wdsel[["Style"]] <- -67
-   wdsel[["ParagraphFormat"]][["LineSpacingRule"]] <- 0
-   wdsel[["Font"]][["Name"]]<-"Courier New"
-   wdsel[["Font"]][["Size"]]<-fontsize
+   wdfmt<- wdsel[["ParagraphFormat"]]
+   wdfmt[["LineSpacingRule"]] <- 0
+   wdfont<-wdsel[["Font"]]
+   wdfont[["Name"]]<-"Courier New"
+   wdfont[["Size"]]<-fontsize
    newtext <- paste(text,collapse="\n")
    wdsel$TypeText(newtext)
    wdsel$TypeParagraph()

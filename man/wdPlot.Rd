@@ -12,7 +12,7 @@ can be replaced by another function which creates a graph.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-wdPlot(..., plotfun = plot, method="metafile",height = 5, width = 5,
+wdPlot(..., plotfun = plot, caption="",method="metafile",height = 5, width = 5,
 pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -22,6 +22,9 @@ pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 }
   \item{plotfun}{
     the plot function (by default \code{plot})
+}
+  \item{caption}{
+    figure caption
 }
   \item{method}{
     the graphics device type (\code{metafile} or \code{bitmap})
@@ -48,28 +51,12 @@ pointsize = 10, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 \details{
 The plot is transfered as a windows metafile.
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 \dontrun{
 wdGet()

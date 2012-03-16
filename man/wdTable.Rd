@@ -11,7 +11,7 @@ add a bookmark (and a caption - doesn't work yet).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autoformat = 1, align = c("l", rep("r", ncol(data))), wdapp = .R2wd)
+wdTable(data, caption = "", caption.pos="below",bookmark = NULL, pointsize = 9, padding = 5, autoformat = 1, row.names=TRUE,align = if (row.names) c("l",rep("r", ncol(data))) else c(rep("r", ncol(data))),hlines=NULL,wdapp = .R2wd)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,7 +19,10 @@ wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autofor
     a data frame or an array
 }
   \item{caption}{
-    the caption to use in Word (doesn't work yet)
+    the caption to use in Word
+}
+  \item{caption.pos}{
+    the caption position "below" or "above"
 }
   \item{bookmark}{
     the bookmark to use in Word
@@ -33,10 +36,21 @@ wdTable(data, caption = "", bookmark = NULL, pointsize = 9, padding = 5, autofor
   \item{autoformat}{
     which of the Word autoformats to use (try 1, 2, 3)
 }
+  \item{row.names}{
+    whether row names should be printed (default=TRUE)
+}
   \item{align}{
     alignment instruction. Default: c("l",rep("r",ncol(data))): align
-    first column left and the others right. "c" stands for centering.
+    first column left and the others right. "c" stands for
+    centering. The character "|" can be inserted where the user wishes a
+    vertical line to be drawn.
 }
+  \item{hlines}{
+    a character vector of length nrow(data)+1 containing "b","t","bt",or
+    "n" to indicate whether a horizontal line should be drawn below, on
+    top, or both. "n" means none.
+}
+
   \item{wdapp}{
     the handle to the Word Application (usually not needed).
 }
@@ -47,28 +61,12 @@ two paragraph breaks. Fills it with dataframe or array (using the clipboard).
 Creates a bookmark and adds a caption. Uses word autoformating and
 aligns columns according to user input.
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Christian Ritter
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 \dontrun{
 wdGet()

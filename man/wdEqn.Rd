@@ -9,7 +9,7 @@ This function allows writing formulas/equations into Word using the
 default formula editor in Word 2007 and 2010.
 }
 \usage{
-wdEqn(eqtext, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
+wdEqn(eqtext, bookmark = NULL, iknow=FALSE,waitsec=2,wdapp = .R2wd, paragraph = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,6 +18,12 @@ wdEqn(eqtext, bookmark = NULL, wdapp = .R2wd, paragraph = TRUE)
 }
   \item{bookmark}{
     a text string containing the bookmark to use (otherwise default)
+}
+  \item{iknow}{
+    acknowledgement of danger using sendkeys
+}
+  \item{waitsec}{
+    time R waits while sendkey sends the equation
 }
   \item{wdapp}{
     the handle to the Word application
@@ -41,32 +47,20 @@ fragile, so handle with caution.
 \value{
   none
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 \dontrun{
 wdGet()
 wdTitle("Try a formula")
-## note that \\ has to be used instead of \
+## note that double \\ has to be used instead of \
 ## note that the , the following lines
 ## must be pasted into the console and run there.
 ## running them from an Emacs/ESS buffer won't work
-wdEqn("\\alpha \\over ( \\beta +3 ) ")
-wdEqn("\\alpha \\over (( \\beta +3 ))")
-wdEqn("\\matrix(\\alpha &0@0&1 ) ")
+wdEqn("\\\\alpha \\\\over ( \\\\beta +3 ) ")
+wdEqn("\\\\alpha \\\\over (( \\\\beta +3 ))")
+wdEqn("\\\\matrix(\\\\alpha &0@0&1 ) ")
 ## note: the handling of parentheses "(" is a bit peculiar in Word
 ## also experiment with the handling of empty spaces
 }
